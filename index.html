@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <h2>SIGN UP</h2>
+    <div class="form_container">
+        <form action="" id="robotChecker">
+            <div class="g-recaptcha" data-sitekey="6LfrFKQUAAAAAMzFobDZ7ZWy982lDxeps8cd1I2i"></div>
+            <p>
+                <label for="name">Name</label>
+                <br>
+                <input type="name" name="name" id="name" minlength="5" required />
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="password" id="password" minlength="8" maxlength="15" required />
+            </p>
+            <p>
+                <label for="email">Email</label>
+                <br>
+                <input type="email" name="email" id="email" />
+            </p>
+            <p>
+                <label for="aboutme">About Me</label>
+                <br>
+                <textarea name="aboutme" id="aboutme" cols="30" rows="10" maxlength="250"></textarea>
+            </p>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer>
+
+        document.querySelector("#robotChecker").addEventListener("submit", (e) => {
+
+            const response = grecaptcha.getResponse();
+            if (response.length === 0) {
+                //reCaptcha not verified
+                alert("DEFINATELY A ROBOT!");
+                e.preventDefault();
+                return false;
+            }
+        
+        });
+
+    </script>
+    <!-- <script>
+        const form = document.querySelector('form')
+
+        form.addEventListener('submit', (e) => {
+            const usernameInput = document.querySelector('#username');
+            const passwordInuput = document.querySelector('#password');
+
+            console.log(usernameInput.value);
+            console.log(passwordInuput.value);
+
+
+            if (passwordInuput.value.includes(usernameInput.value)) {
+                e.preventDefault();
+                // passwordInuput.setCustomValidity("Don't use your username in your password");
+                alert("cant do that")
+
+            }
+
+        }) -->
+    </script>
+</body>
+
+</html>
